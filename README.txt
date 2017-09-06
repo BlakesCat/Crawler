@@ -8,7 +8,8 @@
   class="usname"
   class="tminfo" > time
   class="v_desc report-scroll-module report-wrap-module"
-  [空]                                                         成功录入信息
+  [空] 
+  点击：录入                                                   成功录入信息
                                                                展示获取的信息
                                                                
 测试用例02：查看模板库中的模板
