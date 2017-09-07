@@ -1,6 +1,8 @@
 package org.tjise.util;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.tjise.crawler.Operation;
 import org.tjise.crawler.Website;
@@ -35,14 +37,54 @@ public class ValidateAciton extends ActionSupport {
 	}
 
 	public String execute(){
-		if(!website.equals("") && website != null){
+		
 			Operation op = new Operation();
 			op.add(website);
 		
 			return "success";
-		}
-		return "input";
+		
 	}
+	
+	public void validateExecute() {
+		
+		String regex = "[\u0391-\uFFE5]+$|[A-Za-z][A-Za-z1-9_-]+$";
+		Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+		Matcher matcher = pattern.matcher(website.getName());
+		System.out.println(website.getName().length());
+		System.out.println(matcher.matches());
+		
+		if(website.getName().length()>32 && website.getName().length()<4){
+        	super.addFieldError("len", "网站名字需要在4到32个字符之间！");
+            
+        	return;
+        }else if(website.getName() == null || "".equals(website.getName().trim())){
+            super.addFieldError("notnull", "网站名字不能为空！");
+            return;
+        }
+        if(!matcher.matches()){
+        	super.addFieldError("test", "网站名字的字符非法");
+            return;
+        }
+        
+        
+        if(website.getChannel()==null || "".equals(website.getChannel().trim())){
+            super.addFieldError("url", "网站地址能为空！");
+            return;
+        }
+        if(!matcher.matches()){
+        	super.addFieldError("test", "网站地址有无效字符");
+            return;
+        }
+        
+        if(website.getTitle()==null || "".equals(website.getTitle().trim())
+        		&& website.getAuthor()==null || "".equals(website.getAuthor().trim())
+        		&& website.getPubtime()==null || "".equals(website.getPubtime().trim())
+        		&& website.getContent()==null || "".equals(website.getContent().trim())
+        		&& website.getSource()==null || "".equals(website.getSource().trim())){
+            super.addFieldError("path", "Xpath不能为空");
+            return;
+        }
+    }
 	
 	public String execute2(){
 		Operation op = new Operation();
@@ -60,6 +102,22 @@ public class ValidateAciton extends ActionSupport {
 		
 	}
 	
+	public void validateExecute3() {
+		
+		if(website.getName()==null || "".equals(website.getName().trim())){
+            super.addFieldError("url", "网站名字能为空！");
+            return;
+        }
+
+		
+		if(website.getChannel()==null || "".equals(website.getChannel().trim())){
+            super.addFieldError("url", "网站名字能为空！");
+            return;
+        }
+		
+		
+	}
+	
 	public String execute4(){
 		Operation op = new Operation();
 		op.update(website.getName(),website.getChannel());
@@ -67,6 +125,15 @@ public class ValidateAciton extends ActionSupport {
 		return "success";
 		
 	}
+	
+public void validateExecute4() {
+		
+	if(website.getName()==null || "".equals(website.getName().trim())){
+        super.addFieldError("url", "网站名字能为空！");
+        return;
+    }
+	}
+	
 	public String quit(){
 		
 		return "input";

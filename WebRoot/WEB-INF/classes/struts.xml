@@ -16,12 +16,12 @@
         
         <action name="register3" class="org.tjise.util.ValidateAciton" method="execute3">
         	<result name="success">/success2.jsp</result>
-        	<result name="input">/register.jsp</result>
+        	<result name="input">/success2.jsp</result>
         </action>
         
         <action name="register4" class="org.tjise.util.ValidateAciton" method="execute4">
         	<result name="success">/success2.jsp</result>
-        	<result name="input">/register.jsp</result>
+        	<result name="input">/success2.jsp</result>
         </action>
         
         <action name="quit" class="org.tjise.util.ValidateAciton" method="quit">

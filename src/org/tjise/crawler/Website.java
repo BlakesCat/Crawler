@@ -4,8 +4,6 @@ import java.sql.Time;
 
 
 
-
-
 public class Website {
 	private int id;
 	private String name; //站点名字
@@ -19,6 +17,8 @@ public class Website {
 	private String pubtime; //发布时间的xpath
 	private String content; //正文的xpath
 	private String source; //转发来源的xpath
+	
+	
 	public int getId() {
 		return id;
 	}

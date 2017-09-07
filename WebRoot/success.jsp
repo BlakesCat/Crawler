@@ -11,7 +11,7 @@
     <h1>录入结果:</h1> <br/>
     ${website}
     <s:form action="quit" method="post">
-    <s:submit label="Register"  action="quit"  value="返回" />
+    <s:submit   value="返回" />
     </s:form>
 </body>
 </html>
